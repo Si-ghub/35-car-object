@@ -1,23 +1,53 @@
 class Car {
     constructor(data) {
         this.data = data;
-        console.log(data);
     }
+
     intro() {
         console.log(`This is ${this.data.brand}.`);
     }
 
-    doorsCount(index) {
+    doorsCount() {
         console.log(`${this.data.brand} has ${this.data.doors.length} doors.`);
     }
 
     doorsWorking() {
+        //reikiamu kintamuju inicijavimas
+        let workingDoorsCount = 0;
 
-        console.log(`${this.data.brand} has ${this.data.doors.length} doors and all works!`);
+        //suskaiciuojame kiek yra veikianciu duru
+        for (let i = 0; i < this.data.doors.length; i++) {
+            const doors = this.data.doors[i];
+            if (doors.working === true) {
+                ++workingDoorsCount;
+            }
+        }
 
-        console.log(`${this.data.brand} has ${this.data.doors.length} doors, but only 3 is working.`);
+        //spausdiname pranesima (console.log)
+        if (this.data.doors.length === workingDoorsCount) {
+            console.log(`${this.data.brand} has ${this.data.doors.length} doors, and all works!`);
+        } else {
+            console.log(`${this.data.brand} has ${this.data.doors.length} doors, but only ${workingDoorsCount} is working. `);
+        }
+
+    }
+    maxDistance() {
+        const maxDistanceToTravel = this.data.tank.maxSize * 100 / this.data.fuelComsumption;
+        console.log(`${this.data.brand} can travel maximum ${maxDistanceToTravel.toFixed(0)} km`);
     }
 
+    canTravel(distance) {
+        const maxToTravelWithCurrentSize = this.data.tank.currentSize * 100 / this.data.fuelComsumption;
+        if (maxToTravelWithCurrentSize >= distance) {
+            console.log(`${this.data.brand} can travel ${distance} km.`);
+        } else {
+            console.log(`${this.data.brand} can't travel 500 km, it has fuel only for ${maxToTravelWithCurrentSize.toFixed(0)} km.`);
+        }
+    }
+
+    continueTravel() {
+
+    }
 }
 
 module.exports = Car;
