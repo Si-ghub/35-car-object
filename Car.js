@@ -12,10 +12,8 @@ class Car {
     }
 
     doorsWorking() {
-        //reikiamu kintamuju inicijavimas
         let workingDoorsCount = 0;
 
-        //suskaiciuojame kiek yra veikianciu duru
         for (let i = 0; i < this.data.doors.length; i++) {
             const doors = this.data.doors[i];
             if (doors.working === true) {
@@ -23,13 +21,11 @@ class Car {
             }
         }
 
-        //spausdiname pranesima (console.log)
         if (this.data.doors.length === workingDoorsCount) {
             console.log(`${this.data.brand} has ${this.data.doors.length} doors, and all works!`);
         } else {
             console.log(`${this.data.brand} has ${this.data.doors.length} doors, but only ${workingDoorsCount} is working. `);
         }
-
     }
     maxDistance() {
         const maxDistanceToTravel = this.data.tank.maxSize * 100 / this.data.fuelComsumption;
