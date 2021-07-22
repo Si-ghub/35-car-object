@@ -45,8 +45,14 @@ class Car {
         }
     }
 
-    continueTravel() {
-
+    continueTravel(distance) {
+        const maxToTravelWithCurrentSize = this.data.tank.currentSize * 100 / this.data.fuelComsumption;
+        const extraCostforTravelMore = (distance - maxToTravelWithCurrentSize) / 100 * this.data.fuelComsumption * this.data.fuelCostPerLitre;
+        if (maxToTravelWithCurrentSize >= distance) {
+            console.log(`${this.data.brand} can travel ${distance} km, no extra fuel is needed.`);
+        } else {
+            console.log(`${this.data.brand} can't travel 500 km, you need ${extraCostforTravelMore.toFixed(2)} Euros for extra fuel.`);
+        }
     }
 }
 
